@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://daoq5lcn7ob1s"]
+
+[node name="HealthBar" type="Node" unique_id=202318900]
+
+[node name="TextEdit" type="TextEdit" parent="." unique_id=23911116]
+offset_right = 8.0
+offset_bottom = 8.0
