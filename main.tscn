@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://drtapanue83fq"]
 
+[ext_resource type="PackedScene" uid="uid://dcwrkkc4yaakn" path="res://enemy_1.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cva6iek811g7c" path="res://player.tscn" id="1_ig7tw"]
 
 [node name="Main" type="Node" unique_id=244345774]
@@ -8,6 +9,9 @@
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0.68235296, 0, 1)
+
+[node name="Enemy1" parent="." unique_id=853102149 instance=ExtResource("1_0xm2m")]
+position = Vector2(757, 229)
 
 [node name="Player" parent="." unique_id=1199042940 instance=ExtResource("1_ig7tw")]
 position = Vector2(345, 322)

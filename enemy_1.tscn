@@ -3,9 +3,12 @@
 [ext_resource type="Script" uid="uid://bebvlpnlk7hwg" path="res://enemy_1.gd" id="1_mbxyh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6rg8l"]
-size = Vector2(75, 75)
+size = Vector2(70, 70)
 
-[node name="Enemy1" type="CharacterBody2D" unique_id=853102149]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbxyh"]
+size = Vector2(80, 80)
+
+[node name="Enemy1" type="CharacterBody2D" unique_id=853102149 groups=["enemies"]]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_mbxyh")
@@ -17,5 +20,15 @@ offset_right = 40.0
 offset_bottom = 40.0
 color = Color(1, 0, 0, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1088671149]
+[node name="MovementHitbox" type="CollisionShape2D" parent="." unique_id=1088671149]
 shape = SubResource("RectangleShape2D_6rg8l")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1549868104]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=136382584]
+shape = SubResource("RectangleShape2D_mbxyh")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

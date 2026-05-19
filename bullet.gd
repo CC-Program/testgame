@@ -10,14 +10,8 @@ func _ready():
 	start_position = global_position
 
 func _physics_process(delta):
-	
 	# Move bullet
 	global_position += direction * speed * delta
-
 	# Check range limit
 	if global_position.distance_to(start_position) > range:
 		queue_free()
-
-func _on_body_entered(body):
-	# Optional: damage system hook
-	queue_free()

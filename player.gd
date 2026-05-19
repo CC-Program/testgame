@@ -52,3 +52,8 @@ func shoot():
 
 	await get_tree().create_timer(shoot_cooldown).timeout
 	can_shoot = true
+
+
+func _on_hurt_box_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemies"):
+		queue_free()
