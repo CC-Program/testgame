@@ -2,6 +2,7 @@ extends Area2D
 
 @export var speed: float = 500.0
 @export var range: float = 400.0
+@export var damage: float = 50.0
 
 var direction: Vector2 = Vector2.ZERO
 var start_position: Vector2

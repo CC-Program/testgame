@@ -5,6 +5,8 @@ enum EnemyType {
 	CHASE
 }
 
+@export var health : float = 100.0
+@export var damage : float = 50.0
 @export var enemy_type : EnemyType = EnemyType.CHASE
 @export var move_speed : float = 100.0
 
@@ -46,4 +48,6 @@ func chase_behavior():
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player_bullet"):
 		area.queue_free()
-		queue_free()
+		health -=area.damage
+		if health <= 0:
+			queue_free()

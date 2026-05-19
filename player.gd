@@ -1,11 +1,15 @@
 extends CharacterBody2D
 
+@onready var invincible_timer = $InvincibleTimer
+
+@export var health : float = 100.0
 @export var move_speed : float = 200.0
 @export var acceleration : float = 10.0
 @export var friction : float = 15.0
 @export var bullet_scene: PackedScene
 @export var shoot_cooldown: float = 0.5
 
+var invincible = false
 var input_vector : Vector2 = Vector2.ZERO
 var can_shoot := true
 var last_facing := Vector2.DOWN
@@ -53,7 +57,16 @@ func shoot():
 	await get_tree().create_timer(shoot_cooldown).timeout
 	can_shoot = true
 
-
 func _on_hurt_box_body_entered(body: Node2D) -> void:
+	if invincible: return
+	print("get hit")
 	if body.is_in_group("enemies"):
-		queue_free()
+		health -= body.damage
+		if health <=0:
+			queue_free()
+			invincible = true
+		invincible_timer.wait_time = 1.0
+		invincible_timer.start
+
+func _on_invincible_timer_timeout() -> void:
+	invincible = false
