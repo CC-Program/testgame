@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dcwrkkc4yaakn" path="res://enemy_1.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cva6iek811g7c" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://daoq5lcn7ob1s" path="res://health_bar.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node" unique_id=244345774]
 
@@ -13,5 +14,9 @@ color = Color(0, 0.68235296, 0, 1)
 [node name="Enemy1" parent="." unique_id=853102149 instance=ExtResource("1_0xm2m")]
 position = Vector2(757, 229)
 
+[node name="HealthBar" parent="Enemy1" unique_id=734496782 instance=ExtResource("3_h2yge")]
+
 [node name="Player" parent="." unique_id=1199042940 instance=ExtResource("1_ig7tw")]
 position = Vector2(345, 322)
+
+[node name="HealthBar" parent="Player" unique_id=548264443 instance=ExtResource("3_h2yge")]

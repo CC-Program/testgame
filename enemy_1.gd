@@ -17,6 +17,8 @@ enum EnemyType {
 var patrol_target : Vector2
 var player = null
 
+func get_health(): return health
+
 func _ready():
 	patrol_target = point_b
 	player = get_tree().get_first_node_in_group("player")

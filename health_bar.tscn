@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://daoq5lcn7ob1s"]
 
-[node name="HealthBar" type="Node" unique_id=202318900]
+[ext_resource type="Script" uid="uid://88wa3hdggs2j" path="res://health_bar.gd" id="1_m7ell"]
 
-[node name="TextEdit" type="TextEdit" parent="." unique_id=23911116]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="HealthBar" type="Node2D" unique_id=734496782]
+script = ExtResource("1_m7ell")
+
+[node name="Label" type="Label" parent="." unique_id=471852130]
+offset_right = 40.0
+offset_bottom = 23.0

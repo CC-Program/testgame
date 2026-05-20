@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var invincible_timer = $InvincibleTimer
+@onready var enemy_touched : CharacterBody2D = null
 
 @export var health : float = 100.0
 @export var move_speed : float = 200.0
@@ -13,9 +14,11 @@ var invincible = false
 var input_vector : Vector2 = Vector2.ZERO
 var can_shoot := true
 var last_facing := Vector2.DOWN
+var touching_enemies := false
+
+func get_health(): return health
 
 func _physics_process(delta):
-
 	# Get input
 	input_vector = Vector2(
 		Input.get_action_strength("player_right") - Input.get_action_strength("player_left"),
@@ -33,8 +36,13 @@ func _physics_process(delta):
 	if Input.is_action_pressed("player_attack_confirm") and can_shoot:
 		shoot()
 	
-	if input_vector != Vector2.ZERO:
-		last_facing = input_vector
+	#touching enemies
+	if enemy_touched != null and not invincible:
+		health -= enemy_touched.damage
+		if health <=0:
+			queue_free()
+		invincible = true
+		invincible_timer.start()
 
 	move_and_slide()
 
@@ -58,15 +66,11 @@ func shoot():
 	can_shoot = true
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
-	if invincible: return
-	print("get hit")
 	if body.is_in_group("enemies"):
-		health -= body.damage
-		if health <=0:
-			queue_free()
-			invincible = true
-		invincible_timer.wait_time = 1.0
-		invincible_timer.start
+		enemy_touched = body
+
+func _on_hurt_box_body_exited(body: Node2D) -> void:
+	enemy_touched = null
 
 func _on_invincible_timer_timeout() -> void:
 	invincible = false
