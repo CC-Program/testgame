@@ -1,16 +1,22 @@
 extends Node2D
 
-var weapons = []
-var current_index = 0
+@onready var weapon_full_list = get_children()
+var weapon_got = []
+var current_weapon = 0
+
+func _ready() -> void:
+	weapon_got.append(weapon_full_list)
 
 func add_weapon(weapon):
-	weapons.append(weapon)
+	if not weapon_got.has(weapon):
+		weapon_got.append(weapon)
 
 func remove_weapon(weapon):
-	weapons.erase(weapon)
+	if weapon_got.has(weapon):
+		weapon_got.erase(weapon)
 
 func attack():
-	if weapons.is_empty():
+	if weapon_got.is_empty():
 		return
 	weapons[current_index].attack()
 
