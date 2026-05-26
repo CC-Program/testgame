@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://dt2ua3emyldig"]
 
 [ext_resource type="Script" uid="uid://ccd7vug6es3ic" path="res://weapon_manager.gd" id="1_7cv17"]
+[ext_resource type="PackedScene" uid="uid://ccabbtb1odu5q" path="res://weapon_rifle.tscn" id="2_o1452"]
+[ext_resource type="PackedScene" uid="uid://dpi36dnu4cet4" path="res://weapon_gun.tscn" id="3_87sfo"]
 
 [node name="WeaponManager" type="Node2D" unique_id=1224536504]
 script = ExtResource("1_7cv17")
+
+[node name="weapon_rifle" parent="." unique_id=49412643 instance=ExtResource("2_o1452")]
+
+[node name="WeaponGun" parent="." unique_id=1825266870 instance=ExtResource("3_87sfo")]

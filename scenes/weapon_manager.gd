@@ -18,9 +18,9 @@ func remove_weapon(weapon):
 func attack():
 	if weapon_got.is_empty():
 		return
-	weapons[current_index].attack()
+	weapon_got[current_weapon].attack()
 
 func next_weapon():
-	current_index += 1
-	if current_index >= weapons.size():
-		current_index = 0
+	current_weapon += 1
+	if current_weapon >= weapon_got.size():
+		current_weapon = 0
