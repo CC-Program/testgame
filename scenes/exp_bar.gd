@@ -2,11 +2,11 @@ extends Node2D
 
 @export var offset := Vector2(0, -40)
 
-@onready var hp_label = $Label
-@onready var hp_bar = $ProgressBar
+@onready var exp_label = $Label
+@onready var exp_bar = $ProgressBar
 
 func _ready() -> void:
-	hp_bar.max_value = get_parent().get_max_health()
+	exp_bar.max_value = get_parent().get_next_level_exp()
 	position = offset
 
 func _physics_process(delta: float) -> void:

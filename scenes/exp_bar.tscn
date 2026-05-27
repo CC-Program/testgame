@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cifhlxoew7od6"]
+
+[ext_resource type="Script" uid="uid://b667efr1qvw4m" path="res://exp_bar.gd" id="1_ia5fa"]
+
+[node name="ExpBar" type="Node2D" unique_id=1787445936]
+script = ExtResource("1_ia5fa")
+offset = null
+
+[node name="Label" type="Label" parent="." unique_id=929024219]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=2078028091]
+offset_right = 4.0
+offset_bottom = 27.0

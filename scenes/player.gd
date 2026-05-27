@@ -3,7 +3,10 @@ extends CharacterBody2D
 @onready var invincible_timer = $InvincibleTimer
 @onready var enemy_touched : CharacterBody2D = null
 
+@export var max_health : float = 100.0
 @export var health : float = 100.0
+@export var current_exp : float = 0.0
+@export var next_exp : float = 100.0
 @export var move_speed : float = 200.0
 @export var acceleration : float = 10.0
 @export var friction : float = 15.0
@@ -17,6 +20,7 @@ var last_facing := Vector2.DOWN
 var touching_enemies := false
 
 func get_health(): return health
+func get_max_health(): return max_health
 
 func _physics_process(delta):
 	# Get input
