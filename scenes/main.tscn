@@ -1,14 +1,16 @@
 [gd_scene format=3 uid="uid://drtapanue83fq"]
 
 [ext_resource type="PackedScene" uid="uid://dcwrkkc4yaakn" path="res://enemy_1.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://cmbf2xkhsfjhy" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cva6iek811g7c" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://daoq5lcn7ob1s" path="res://health_bar.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node" unique_id=244345774]
+script = ExtResource("1_1bvp3")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1608913375]
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_right = 2522.0
+offset_bottom = 1308.0
 color = Color(0, 0.68235296, 0, 1)
 
 [node name="Enemy1" parent="." unique_id=853102149 instance=ExtResource("1_0xm2m")]
@@ -20,3 +22,5 @@ position = Vector2(757, 229)
 position = Vector2(345, 322)
 
 [node name="HealthBar" parent="Player" unique_id=548264443 instance=ExtResource("3_h2yge")]
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1042018455]

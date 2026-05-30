@@ -69,6 +69,9 @@ func shoot():
 	await get_tree().create_timer(shoot_cooldown).timeout
 	can_shoot = true
 
+func exp_add(exp_get):
+	current_exp += exp_get
+
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		enemy_touched = body

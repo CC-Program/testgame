@@ -5,6 +5,8 @@ enum EnemyType {
 	CHASE
 }
 
+signal enemy_die(add_exp)
+@export var exp_amount : float = 10.0
 @export var health : float = 100.0
 @export var damage : float = 50.0
 @export var enemy_type : EnemyType = EnemyType.CHASE
@@ -52,4 +54,5 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		area.queue_free()
 		health -=area.damage
 		if health <= 0:
+			enemy_die.emit(exp_amount)
 			queue_free()
